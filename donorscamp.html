@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>donorscamp</title>
+    <!-- 이 태그를 사용하여 간단한 페이지 설명을 제공. 페이지 설명은 구글 검색결과에 표시  -->
+    <meta name="description" content="PortFolio for Beckia">
+    <!-- 웹 페이지의 소유자(또는 회사)를 적는다. -->
+    <meta name="author" content="Beckia">
+    <!-- 아이콘 사용 -->
+    <link rel="icon" type="image/png" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <style>
+      #wrap{
+        position: relative;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 500px;
+      }
+      #wrap > .img-cover{
+        position: absolute; left: 50%; transform: translateX(-50%); width: 80%;
+      }
+
+      #wrap > .img-cover >img{ 
+        width: 100%;
+      }
+      
+      #wrap > .img-cover >a{
+        position: absolute;  right: 0; display: block; width: 42%; height: 0.7%; text-indent: -9999px;
+ 
+      }
+      #wrap > .img-cover >.donorscamp-link{  
+        top: 1.5%;
+     }
+      #wrap > .img-cover >.donorscamp-copy-link{  
+        top: 2.5%;
+     }
+      #wrap > .img-cover >.donorscamp-git{
+        top:3.5%;
+      }
+
+    </style>
+  </head>
+<body>
+  <div id="wrap">
+    <div class="img-cover">
+      <img src="././images/donorscamp.png" alt="도너스 캠프 소개 이미지">
+      <a class="donorscamp-link" href="https://www.donorscamp.org/index.do"  target="_blank">원본 사디트 보러가기</a>
+      <a class="donorscamp-copy-link" href="http://beckia.dothome.co.kr/donorscamp.com/index.html"  target="_blank">작업 사이트 보러가기</a>
+      <a class="donorscamp-git" href="https://github.com/misunplus/donorscamp"  target="_blank" >소스코드 보러가기</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1092 @@
+@charset "utf-8";
+
+$olor-pink: #ec6d71;
+$color-brown: #94715c;
+$color-Blue: #96d3de;
+$color-darkBlue: #69bfcd;
+$color-white: #fff;
+$color-green: #b2dab8;
+
+@mixin outline($colr) {
+	outline: 1px solid $colr;
+}
+
+@mixin bgc($colr) {
+	background-color: $colr;
+}
+
+@mixin fontset($fontcolr, $fontweight, $fontsize) {
+	color: $fontcolr;
+	font-weight: $fontweight;
+	font-size: $fontsize;
+}
+
+@mixin flex($direction: row, $wrap: nowrap) {
+	display: flex;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+}
+@-webkit-keyframes rotation {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+	}
+}
+
+$width-tablet: 992px;
+$width-mobile: 768px;
+$width-etc: 427px;
+
+$tablet: 'screen and (max-width:' + $width-tablet + ')';
+$mobile: 'screen and (max-width:' + $width-mobile + ')';
+$etc: 'screen and (max-width:' + $width-etc + ')';
+
+@keyframes line1 {
+	0% {
+		left: 0;
+		width: 0;
+	}
+	49% {
+		left: 0;
+		width: 100%;
+	}
+	50% {
+		right: 0;
+		width: 100%;
+		left: initial;
+	}
+
+	100% {
+		left: initial;
+		right: 0;
+		width: 0;
+	}
+}
+@keyframes line2 {
+	0% {
+		right: 0;
+		top: 0;
+		height: 0;
+	}
+	49% {
+		right: 0;
+		top: 0;
+		height: 100%;
+	}
+	50% {
+		top: initial;
+		right: 0;
+		bottom: 0;
+		height: 100%;
+	}
+
+	100% {
+		top: initial;
+		right: 0;
+		bottom: 0;
+		height: 0%;
+	}
+}
+@keyframes line3 {
+	0% {
+		right: 0;
+		left: initial;
+		bottom: 0;
+		width: 0%;
+	}
+	49% {
+		right: 0;
+		left: initial;
+		bottom: 0;
+		width: 100%;
+	}
+	50% {
+		right: initial;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+
+	100% {
+		right: initial;
+		left: 0;
+		bottom: 0;
+		width: 0%;
+	}
+}
+
+@keyframes line4 {
+	0% {
+		top: initial;
+		left: 0;
+		height: 0;
+		bottom: 0;
+	}
+	49% {
+		top: initial;
+		left: 0;
+		height: 100%;
+		bottom: 0;
+	}
+	50% {
+		left: 0;
+		top: 0;
+		height: 100%;
+		bottom: initial;
+		top: 0;
+	}
+
+	100% {
+		left: 0;
+		top: 0;
+		height: 0%;
+		bottom: initial;
+	}
+}
+
+body {
+	background-color: rgba(148, 113, 92, 0.5);
+	font-family: 'Roboto Mono', monospace;
+}
+
+#wrap {
+	font-family: Roboto;
+	min-width: 992px;
+	@media #{$tablet} {
+		width: 100%;
+		min-width: initial;
+	}
+	> .toggle-btn {
+		display: none;
+		width: 25px;
+		height: 25px;
+		text-indent: -9999px;
+		background: url(./../images/btn-tg.png) no-repeat;
+		background-size: 25px 25px;
+		@media #{$mobile} {
+			display: block;
+			position: fixed;
+			right: 20px;
+			top: 30px;
+		}
+	}
+	> #navbar {
+		position: fixed;
+		left: 0;
+		right: 0;
+		height: 50px;
+		max-width: 1024px;
+		width: 100%;
+		z-index: 1000;
+		margin: 0 auto;
+		@media #{$tablet} {
+			margin-top: 10px;
+		}
+		> .gnb {
+			display: flex;
+			justify-content: space-around;
+			@media #{$mobile} {
+				justify-content: space-between;
+			}
+			&.on li {
+				transform: scale(0.7);
+				filter: blur(5px);
+				@media #{$tablet} {
+					filter: initial;
+				}
+			}
+			&.on {
+				transform: scale(0.7);
+			}
+			> li {
+				position: relative;
+				height: 50px;
+				transition: all 0.4s;
+
+				@media #{$tablet} {
+					height: 50px;
+				}
+				@media #{$mobile} {
+					height: 30px;
+				}
+
+				&:before,
+				&:after,
+				&.on:before,
+				&.on:after {
+					display: block;
+					position: absolute;
+					left: 0;
+					top: 0;
+					content: '';
+					background-color: $color-brown;
+					z-index: 1;
+				}
+				&:before {
+					width: 0;
+					height: 5px;
+				}
+				&:after {
+					width: 5px;
+					height: 0;
+				}
+				&.on:before {
+					// width: 100%;
+					animation: line1 0.3s both;
+				}
+				&.on:after {
+					height: 0%;
+					animation: line4 0.3s both 0.9s;
+				}
+
+				> a {
+					position: relative;
+					display: block;
+					width: 150px;
+					height: 100%;
+					@include fontset($color-brown, 400, 18px);
+					line-height: 50px;
+					text-align: center;
+					color: $color-brown;
+					background-color: $color-green;
+					transition: all 0.9s;
+					background-position-x: center;
+					border-radius: 5px;
+
+					@media #{$tablet} {
+						width: 150px;
+						line-height: 50px;
+						@include fontset($color-brown, 400, 16px);
+					}
+
+					@media #{$mobile} {
+						width: 60px;
+						line-height: 30px;
+						@include fontset($color-brown, 400, 16);
+					}
+					&:after,
+					&::before {
+						display: block;
+						position: absolute;
+						content: '';
+						background-color: $color-brown;
+					}
+				}
+				&.on > a:before {
+					left: 0;
+					bottom: 0;
+					// width: 100%;
+					height: 5%;
+				}
+				&.on > a:before {
+					animation: line3 0.3s both 0.6s;
+				}
+				&.on > a:after {
+					right: 0;
+					top: 0;
+					width: 5px;
+					// height: 100%;
+				}
+				&.on > a:after {
+					animation: line2 0.3s both 0.3s;
+				}
+				&.on,
+				&:hover {
+					transform: scale(1.2);
+					filter: initial;
+					@media #{$mobile} {
+						transform: scale(1);
+					}
+				}
+				&.on > a,
+				&.on > a {
+					position: relative;
+					font-weight: 800;
+					border-radius: 5px;
+					box-sizing: border-box;
+					background-image: url(./../images/logomini.png);
+					background-repeat: no-repeat;
+					background-position-y: 25px;
+
+					@media #{$tablet} {
+						width: 150px;
+						background-position: center 5px;
+					}
+					@media #{$mobile} {
+						width: 100px;
+						background-position: center 5px;
+					}
+				}
+			}
+		}
+	}
+	#home {
+		//삭제예정
+		// display: none;
+		position: relative;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		> h1 {
+			position: fixed;
+			z-index: 1001;
+			@media #{$tablet} {
+				margin-top: 65px;
+			}
+			@media #{$mobile} {
+				margin-top: 55px;
+			}
+			> a {
+				width: 100px;
+				height: 100px;
+				display: block;
+				position: absolute;
+				z-index: 1000;
+				@media #{$mobile} {
+					width: 50px;
+					height: 50px;
+				}
+				> img {
+					width: 100%;
+					height: 100%;
+					display: block;
+					background-size: cover cover;
+					border-radius: 50%;
+					border: 2px solid $color-brown;
+				} //img
+				> .logoframe {
+					display: block;
+					position: absolute;
+					top: 35px;
+					width: 100px;
+					-webkit-animation: rotation 5s infinite linear;
+					z-index: 0;
+					@media #{$mobile} {
+						width: 50px;
+						top: 15px;
+					}
+				}
+			} //a
+		} //h1
+		> .visual {
+			// 삭제 예정코드
+			// display: none;
+			position: relative;
+			padding-top: 100px;
+			width: 100%;
+
+			@media #{$tablet} {
+				display: flex;
+			}
+			@media #{$mobile} {
+				flex-flow: column nowrap;
+			}
+			> .visual-cover {
+				width: 100%;
+				margin: -70px auto 0;
+				// 삭제 가능 확인
+				@media #{$mobile} {
+					margin: 0;
+				}
+
+				> p {
+					position: relative;
+					width: 350px;
+					height: 350px;
+					text-indent: -9999px;
+					margin: 0 auto;
+					background: url(./../images/profileimg.png) no-repeat;
+					background-position: center center;
+					background-size: 350px 350px;
+					border-radius: 50%;
+					// z-index: 10;
+					@media #{$mobile} {
+						width: 150px;
+						height: 150px;
+						background-size: 150px 150px;
+					}
+					&:after {
+						position: absolute;
+						top: 0;
+						left: 0;
+						-webkit-animation: rotation 10s infinite linear;
+						width: 350px;
+						height: 350px;
+						border: 10px solid $color-brown;
+						border-radius: 10px;
+						content: '';
+						box-sizing: border-box;
+						z-index: -1;
+						@media #{$mobile} {
+							width: 150px;
+							height: 150px;
+						}
+					}
+				}
+			}
+			> .text-cover {
+				width: 100%;
+				text-align: center;
+				color: $color-white;
+				> h2 {
+					font-size: 30px;
+					line-height: 2;
+					font-family: 'Nanum Pen Script', cursive;
+					@media #{$tablet} {
+						font-size: 20px;
+					}
+				}
+				> p {
+					font-size: 22px;
+					line-height: 2;
+					font-family: 'Nanum Pen Script', cursive;
+
+					@media #{$tablet} {
+						font-size: 18px;
+					}
+					@media #{$etc} {
+						overflow: hidden;
+						display: -webkit-box;
+						-webkit-box-orient: vertical;
+						word-break: break-all;
+						-webkit-line-clamp: 2;
+					}
+				}
+				button {
+					position: relative;
+					border: none;
+					background-color: none;
+					width: 150px;
+					height: 50px;
+					margin: 50px 0 100px;
+					color: $color-brown;
+					line-height: 50px;
+					background-color: $color-green;
+					border: 2px solid $color-brown;
+					border-radius: 10px;
+					z-index: 12;
+
+					// &::after {
+					// 	display: block;
+					// 	left: 0;
+					// 	top: 0;
+					// 	width: 100%;
+					// 	height: 100%;
+					// 	background-color: $color-green;
+					// 	opacity: 0;
+					// 	transform: translateY(-10px);
+					// 	position: absolute;
+					// 	content: "";
+					// }
+					// &:hover:after {
+					// 	background-color: $color-green;
+
+					// 	border-radius: 10px;
+					// 	transform: translateY(0);
+					// 	opacity: 1;
+					// 	transition: transform 0.4s ease-in-out;
+					// 	z-index: -1;
+					// }
+				}
+			}
+
+			canvas {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -3;
+			}
+			@media #{$tablet} {
+				height: 450px;
+			}
+			@media #{$mobile} {
+				height: 450px;
+			}
+		}
+	} //#head
+	> section {
+		> h2 {
+			position: absolute;
+			left: -9999px;
+		}
+		> #about {
+			//삭제예정
+			// display: none;
+			position: relative;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1200px;
+			// margin-top: 50px;
+			// background-color: #fff;
+			@media #{$mobile} {
+				height: 1000px;
+			}
+			> .about-cover {
+				// display: none;
+				position: absolute;
+				left: 0;
+				right: 0;
+				height: 50px;
+				width: 100%;
+				margin: 0 auto;
+				> .about-cover-text {
+					width: 60%;
+					margin: 50px auto;
+					text-align: center;
+					@media #{$mobile} {
+						width: 90%;
+					}
+					> h3 {
+						font-size: 30px;
+						line-height: 2;
+						font-family: 'Nanum Pen Script', cursive;
+						@media #{$tablet} {
+							font-size: 20px;
+						}
+					}
+					> p {
+						font-size: 22px;
+						line-height: 2;
+						font-family: 'Nanum Pen Script', cursive;
+						@media #{$tablet} {
+							font-size: 18px;
+						}
+						@media #{$etc} {
+							overflow: hidden;
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+							word-break: break-all;
+							-webkit-line-clamp: 2;
+						}
+					}
+				}
+				> .icon-cover {
+					display: flex;
+					justify-content: space-between;
+					width: 80%;
+					margin: 0 auto;
+					@media #{$mobile} {
+						width: 100%;
+					}
+					> div {
+						width: 33.33%;
+						> .icon-cover {
+							position: relative;
+							width: 200px;
+							height: 200px;
+							margin: 0 auto;
+							border: 5px solid $color-brown;
+							border-radius: 50%;
+							@media #{$tablet} {
+								width: 150px;
+								height: 150px;
+							}
+							@media #{$mobile} {
+								width: 80px;
+								height: 80px;
+							}
+							> i {
+								display: block;
+								position: absolute;
+								left: 50%;
+								top: 50%;
+								width: 100px;
+								height: 100px;
+								margin-left: -50px;
+								margin-top: -50px;
+								color: $color-brown;
+								font-size: 100px;
+								text-align: center;
+								transition: all 0.4s linear;
+								@media #{$tablet} {
+									width: 100px;
+									height: 100px;
+									margin-left: -50px;
+									margin-top: -50px;
+									font-size: 100px;
+								}
+								@media #{$mobile} {
+									width: 50px;
+									height: 50px;
+									margin-left: -25px;
+									margin-top: -25px;
+									font-size: 50px;
+								}
+							}
+						}
+						&:hover .icon-cover:after {
+							display: block;
+							position: absolute;
+							left: 50%;
+							width: 13px;
+							height: 100%;
+							background: url(./../images/logomini.png) no-repeat;
+							background-size: 13px 13px;
+							-webkit-animation: rotation 0.5s linear;
+							content: '';
+						}
+						&:hover .icon-cover > i {
+							transform: rotate(45deg) scale(1.2);
+						}
+						> .icon-text-cover {
+							margin-top: 20px;
+							// outline: 1px solid;
+							text-align: center;
+							> .title {
+								@include fontset($color-brown, 800, 18px);
+								line-height: 2;
+								font-family: 'Roboto';
+								@media #{$tablet} {
+									font-size: 16px;
+								}
+							}
+							> .text {
+								@include fontset($color-brown, 400, 18px);
+								line-height: 2;
+								font-family: 'Roboto';
+								@media #{$tablet} {
+									font-size: 14px;
+								}
+							}
+						}
+					}
+				}
+				> .study-cover {
+					@include flex(column, nowrap);
+					width: 100%;
+					align-items: center;
+					.study-logo {
+						> h3 {
+							margin-top: 30px;
+							width: 165px;
+							height: 75px;
+							text-indent: -9999px;
+							border: 2px solid $color-brown;
+							border-radius: 10px;
+						}
+						.hyundai {
+							background: url(./../images/hyundai-logo.png) no-repeat;
+						}
+						.thejoeun {
+							background: url(./../images/thejoeun-log.png) no-repeat;
+						}
+					}
+					> .text-cover {
+						margin-top: 20px;
+						> p {
+							margin-top: 10px;
+							@include fontset($color-brown, 400, 18px);
+							text-align: center;
+							@media #{$tablet} {
+								font-size: 18px;
+							}
+						}
+					}
+				}
+				&.on {
+					display: block;
+				}
+			}
+		}
+		> #skills {
+			// 삭제 예정코드
+			// display: none;
+			position: relative;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 700px;
+			@media #{$tablet} {
+				height: 550px;
+				// background-color: #fff;
+			}
+			@media #{$mobile} {
+				height: 500px;
+				// background-color: #fff;
+			}
+			> .skills-cover {
+				position: absolute;
+				left: 0;
+				right: 0;
+				height: 50px;
+				width: 100%;
+				margin: 0 auto;
+
+				> .skills-cover-text {
+					width: 60%;
+					margin: 50px auto;
+					text-align: center;
+					// background-color: #fff;
+					@media #{$mobile} {
+						width: 90%;
+					}
+					> h3 {
+						font-size: 30px;
+						line-height: 2;
+						font-family: 'Nanum Pen Script', cursive;
+						@media #{$tablet} {
+							font-size: 20px;
+						}
+					}
+				}
+				> #my-skills-cover {
+					@include flex();
+					justify-content: space-between;
+					width: 80%;
+					margin: 0 auto;
+					// background-color: #fff;
+					@media #{$tablet} {
+						width: 90%;
+					}
+					@media #{$mobile} {
+						width: 100%;
+					}
+					> .skill {
+						> .skill-text-cover {
+							position: relative;
+							> p {
+								position: absolute;
+								left: 50%;
+								transform: translateX(-50%);
+								font-family: 'Roboto Mono', monospace;
+								@include fontset($color-brown, 800, 20px);
+								background: -webkit-linear-gradient(30deg, #000 30%, $color-brown 30%, #000);
+								color: transparent;
+								-webkit-background-clip: text;
+								@media #{$tablet} {
+									@include fontset($color-brown, 800, 16px);
+								}
+								@media #{$mobile} {
+									@include fontset($color-brown, 800, 14px);
+								}
+							}
+							> span {
+								position: absolute;
+								left: 50%;
+								top: 50%;
+								transform: translate(-50%, -50%);
+								font-family: 'Roboto Mono', monospace;
+								@include fontset($color-brown, 800, 16px);
+								@media #{$mobile} {
+									margin-top: 7px;
+									@include fontset($color-brown, 800, 14px);
+									// background-color: #fff;
+								}
+							}
+							> .cavas {
+								margin-top: 20px;
+								width: 150px;
+								height: 150px;
+								// background-color: #fff;
+								// outline: 1px solid;
+								@media #{$tablet} {
+									width: 130px;
+									height: 130px;
+								}
+								@media #{$mobile} {
+									width: 60px;
+									height: 60px;
+								}
+							}
+						}
+					}
+				}
+				.etc-cover {
+					width: 80%;
+					margin: 0 auto;
+					@media #{$tablet} {
+						width: 90%;
+					}
+					@media #{$mobile} {
+						width: 100%;
+					}
+					> h4 {
+						padding-left: 50px;
+						@include fontset(#000, 800, 20px);
+						@media #{$tablet} {
+							@include fontset(#000, 800, 16px);
+						}
+					}
+					> ul {
+						@include flex();
+						justify-content: space-between;
+						> li {
+							position: relative;
+							width: 100px;
+							height: 100px;
+							margin: 0 auto;
+							border-radius: 50%;
+							border: 3px solid $color-brown;
+							text-align: center;
+							// background-color: $color-green;
+							@media #{$tablet} {
+								width: 60px;
+								height: 60px;
+							}
+							@media #{$mobile} {
+								width: 40px;
+								height: 40px;
+							}
+							> span {
+								display: inline-block;
+								position: absolute;
+
+								left: 50%;
+								top: 50%;
+								background-color: #fff;
+								transform: translate(-50%, -50%);
+								// text-align: center;
+
+								background: -webkit-linear-gradient(30deg, #000 50%, $color-brown 50%);
+								color: transparent;
+								-webkit-background-clip: text;
+								font-size: 20px;
+								@media #{$tablet} {
+									font-size: 16px;
+								}
+								@media #{$mobile} {
+									font-size: 12px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		> #project {
+			position: relative;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+
+			// background-color: #fff;
+
+			// @media #{$tablet} {
+			// 	height: 1100px;
+			// 	// background-color: #fff;
+			// }
+			// @media #{$mobile} {
+			// 	height: 800px;
+			// 	// background-color: #fff;
+			// }
+			> .project-cover {
+				width: 100%;
+				> h3 {
+					width: 60%;
+					margin: 50px auto;
+					font-size: 30px;
+					line-height: 2;
+					text-align: center;
+					font-family: 'Nanum Pen Script', cursive;
+					@media #{$tablet} {
+						font-size: 20px;
+					}
+				}
+				> .project-tap-cover {
+					@include flex();
+					justify-content: center;
+					width: 80%;
+					margin: 0 auto;
+					// background-color: #fff;
+					@media #{$mobile} {
+						width: 100%;
+					}
+					> button {
+						position: relative;
+						border: initial;
+						background-color: initial;
+						width: 200px;
+						height: 50px;
+						margin: 0 10px;
+						@include fontset($color-brown, 800, 18px);
+						line-height: 20px;
+						background-color: $color-green;
+						border-radius: 10px;
+						@media #{$mobile} {
+							text-align: left;
+							padding-left: 10px;
+							width: 150;
+							height: 50px;
+							@include fontset($color-brown, 800, 12px);
+						}
+						> span {
+							position: absolute;
+							display: inline-block;
+							background-color: #fff;
+							width: 20px;
+							height: 20px;
+							border-radius: 50%;
+							border: 1px solid $color-brown;
+							opacity: 0;
+							transform: translateY(-13px);
+							transition: all 400ms ease-in;
+							@media #{$mobile} {
+								text-align: center;
+								margin-left: 4px;
+							}
+						}
+						&.on .project-count,
+						&:hover .project-count {
+							transform: translateY(0px);
+							opacity: 1;
+							top: 15px;
+						}
+					}
+				} //.project-tap-cover
+				> .projects-cover {
+					@include flex(row, wrap);
+					justify-content: center;
+					width: 70%;
+					margin: 50px auto 0;
+					@media #{$tablet} {
+						width: 80%;
+					}
+					@media #{$mobile} {
+						width: 100%;
+					}
+					> .projects {
+						// display: block;
+						display: none;
+						// outline: 2px solid;
+						position: relative;
+						width: 200px;
+						height: 200px;
+						margin: 40px;
+						box-sizing: border-box;
+						background-color: rgba(148, 113, 92, 0.5); // opacity: 0.9;
+						@media #{$mobile} {
+							width: 100px;
+							height: 100px;
+							margin: 40px;
+						}
+						> img {
+							position: absolute;
+							left: 50%;
+							top: -20px;
+							max-width: 80%;
+							transition: all 400ms ease-in;
+						}
+						&.show {
+							display: block;
+						} //.projects .hide
+						&:hover img {
+							width: 200px;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							background-size: cover cover;
+						} //.projects img
+						> .project-text-cover {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							transform: translateY(-10px);
+							transition: all 400ms ease-in;
+							background-color: rgba(0, 0, 0, 0.5);
+							opacity: 0;
+
+							> h4 {
+								position: relative;
+								padding-top: 40px;
+								text-align: center;
+								@include fontset($color-white, 800, 14px);
+								@media #{$mobile} {
+									padding-top: 0;
+									@include fontset($color-white, 800, 12px);
+								}
+								&:after {
+									position: absolute;
+									left: 50%;
+									bottom: -15px;
+									transform: translate(-50%, 0);
+									display: block;
+									content: '';
+									height: 2px;
+									width: 20px;
+									text-align: center;
+									background-color: $color-green;
+									@media #{$mobile} {
+										bottom: -7px;
+									}
+								}
+							}
+							> span {
+								width: 80%;
+								margin: 0 auto;
+								text-align: center;
+								@include fontset($color-white, 400, 14px);
+								display: -webkit-box;
+								word-break: break-all;
+								line-clamp: 2;
+								@media #{$mobile} {
+									padding-top: 0;
+									@include fontset($color-white, 800, 12px);
+								}
+							}
+						}
+						&:hover .project-text-cover {
+							opacity: 0.8;
+							transform: scale(1.2) translateY(0px);
+						}
+					}
+				} //projects-cover
+			} //.project-cover
+		}
+		> #contact {
+			position: relative;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 450px;
+			> .contact-cover {
+				position: absolute;
+				left: 0;
+				right: 0;
+				width: 100%;
+				> h3 {
+					text-align: center;
+					@include fontset($color-brown, 800px, 50px);
+				}
+				> a {
+					line-height: 2;
+					display: block;
+					text-align: center;
+					@include fontset($color-brown, 400, 30px);
+					> i {
+						display: block;
+						text-align: center;
+
+						@include fontset($color-brown, 400, 60px);
+					}
+				}
+				> footer {
+					display: block;
+					text-align: center;
+					@include fontset($color-white, 400, 40px);
+				} //footer
+			} //.contact-cover
+		} //#contact
+		> #pop {
+			background-color: pink;
+		}
+	}
+} //#wrap

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beckia</title>
+  <!-- 이 태그를 사용하여 간단한 페이지 설명을 제공. 페이지 설명은 구글 검색결과에 표시  -->
+  <meta name="description" content="PortFolio for Beckia">
+  <!-- 웹 페이지의 소유자(또는 회사)를 적는다. -->
+  <meta name="author" content="Beckia">
+  <!-- 폰트 어썸 -->
+  <script src="https://kit.fontawesome.com/a1de2889fc.js" crossorigin="anonymous"></script>
+  <!-- 구글폰트 -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <!-- 아이콘 사용 -->
+  <link rel="icon" type="image/png" href="./images/favicon.ico" />
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/jquery-1.12.4.min.js"></script>
+  <script src="./js/function.js"></script>
+  <script type="module" src="./js/app.js"></script>
+  <script type="module" src="./js/arc.js"></script>
+
+</head>
+
+<body>
+  <div id="wrap">
+    <!-- <div class="toggle-btn">
+      <span>토글버튼</span>
+    </div> -->
+    <nav id="navbar" class="on">
+      <ul class="gnb">
+        <li data-link="#home"><a href="#">Home</a></li>
+        <li data-link="#about"><a href="#">About</a></li>
+        <li data-link="#skills"><a href="#">Skills</a></li>
+        <li data-link="#project"><a href="#">Project</a></li>
+        <li data-link="#contact"><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <header id="home">
+      <h1>
+        <a href="#">
+          <img src="./images/Beckia-logo.png" alt="로고이미지">
+          <span class="logoframe">
+            <img src="./images/logomini.png" alt="로고 포인트 이미지">
+          </span>
+        </a>
+      </h1>
+      <div class="visual">
+        <div class="visual-cover">
+          <p>어서오세요. 만나서 반갑습니다. 임미선 입니다 ^^*</p>
+        </div>
+
+        <div class="text-cover">
+          <h2>
+            매일매일 할 수 있는 것을 찾아 <br />
+            나아 가고있는 주니어 개발자 임미선 입니다.
+          </h2>
+          <p>
+            HTML과 CSS를 배운게 얼마 전이였는데.
+            이렇게 포트폴리오를 만들고 있네요. <br />
+            제가 어떻게 발전 해나가고 있고
+            얼마나 잠재력이 있는 사람인지 <br />
+            한번 구경해봐 주시겠어요~?
+            안보시고 절 놓치시면 후회하실 거에요! <br />
+          </p>
+          <button class="home__contact">CONTACK ME</button>
+        </div>
+      </div>
+    </header>
+    <section>
+      <h2>Content</h2>
+      <article id="about" data-index="0">
+        <div class="about-cover">
+          <div class="about-cover-text">
+            <h3>About Me</h3>
+            <p>
+              부족한 것을 알고 목표하는것이 있기에 저는 계속 발전해 나갈것 입니다.</br>
+              화면을 움직이는 것이 재미있고 문제를 해결했을때 그뿌듯함이 좋습니다.</br>
+              확실한 것은 지금에 만족하지 않고 멋진 개발자가 될 것입니다.</br>
+            </p>
+            <p>#웹퍼블리셔  #시멘틱 #반응형 #시멘틱 #웹표준</p>
+          </div>
+          <div class="about-self-introduction">
+           
+            <div class="profille-cover">
+              <p>개발자를 꿈꾸는 "임미선"</p>
+              <p>1986.02.23(Tiger)</p>
+            </div>
+            <div class="interest">
+              <p><strong>취미</strong>-통기타</p>
+              <p><strong>음악</strong>-그날 기분에 따라</p>
+              <p><strong>특기</strong>-요리, 공예</p>
+              <p><strong>취미</strong>-통기타</p>
+              <p><strong>GIT</strong><a href="https://github.com/misunplus">-git hub</a></p>
+              <p><strong>Tell</strong><a href="tel:010-2456-1122">010-2456-1122</a></p>            
+            </div>
+          </div>
+
+          <div class="icon-cover">
+            <div class="front">
+              <div class="icon-cover">
+                <i class="fab fa-html5"></i>
+              </div>
+              <div class="icon-text-cover">
+                <div class="title">Front</div>
+                <div class="text">HTML, SCSS, Javascript</div>
+              </div>
+            </div>
+            <div class="design">
+              <div class="icon-cover">
+                <i class="fas fa-palette"></i>
+              </div>
+              <div class="icon-text-cover">
+                <div class="title">Design</div>
+                <div class="text">Photoshop, Xd, illustrator</div>
+              </div>
+            </div>
+            <div class="etc">
+              <div class="icon-cover">
+                <i class="fas fa-asterisk"></i>
+              </div>
+              <div class="icon-text-cover">
+                <div class="title">Etc</div>
+                <div class="text">Git, Java </div>
+              </div>
+            </div>
+          </div>
+          <div class="study-cover">
+            <div class="study-logo ">
+              <h3 class="hyundai">서울현대 직업전문학교</h3>
+             
+            </div>
+            <div class="text-cover">
+              <p>2015년 02월~ 2015년 07월</p>
+              <p>수료</p>
+              <p>java, jsp ,Spring
+                Ajax, Jstl,Oracle,pl/SQL</br>
+                ApacheTomcat, Jeus & WebTob연동(TmaxtSoft)...
+              </p>
+            </div>
+            <!--  -->
+            <div class="study-logo">
+              <h3 class="thejoeun">더조은 아카데미</h3>
+              <!-- <p>더조은 아카데미</p> -->
+            </div>
+            <div class="text-cover">
+              <p>2020년 05월~ 2020년 10월</p>
+              <p>수료예정</p>
+              <p>
+                HTML, CSS, SCSS ,Javascript</br>
+                jQuery, PHP, Ajax, ...
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article id="skills" data-index="1">
+        <div class="skills-cover">
+          <div class="skills-cover-text">
+            <h3>My Skills</h3>
+          </div>
+          <div id="my-skills-cover" class="my-skills-cover">
+              <div class="skill">
+                <div class="skill-text-cover">
+                  <p>HTML</p>
+                  <span>90%</span>
+                  <canvas class="skill__value_HTML cavas" width="500" height="500" data-arc="324"></canvas>
+                </div>
+              </div>
+
+              <!--  -->
+              <div class="skill">
+                <div class="skill-text-cover">
+                  <p>CSS</p>
+                  <span>80%</span>
+                  <canvas class="skill__value_CSS cavas" width="500" height="500" data-arc="288"></canvas>
+                </div>
+              </div>
+              <!--  -->
+              <div class="skill">
+                <div class="skill-text-cover">
+                  <p>Javascript</p>
+                  <span>60%</span>
+                  <canvas class="skill__value_Javascript cavas" width="500" height="500" data-arc="216"></canvas>
+                </div>
+              </div>
+              <!--  -->
+              <div class="skill">
+                <div class="skill-text-cover">
+                  <p>jQuery</p>
+                  <span>90%</span>
+                  <canvas class="skill__value_jQuery cavas" width="500" height="500" data-arc="324"></canvas>
+              </div>
+              </div>
+              <!--  -->
+              <div class="skill">
+                <div class="skill-text-cover">
+                  <p>Passion</p>
+                  <span>100%</span>
+                  <canvas class="skill__value_Passion cavas" width="500" height="500" data-arc="360"></canvas>
+                </div>
+              </div>
+          </div>
+          <div class="etc-cover">
+            <h4>
+              <span>
+                ETC
+              </span>
+              </h4>
+            <ul>
+              <li>
+                <span>JAVA</span>
+              </li>
+              <li>
+                <span>Oracle</span>
+              </li>
+              <li>
+                <span>Tomcat</span>
+              </li>
+              <li>
+                <span>Ajax</span>
+              </li>
+              <li>
+                <span>PHP</span>
+              </li>
+              <li>
+                <span>GIT</span>
+              </li>
+              <li> 
+                <span>.</br> .</br> .</span>
+              </li>
+            
+            </ul>
+          </div>
+        </div>
+      </article>
+      <article id="project" data-index="2">
+        <div class="project-cover">
+            <h3>Projects</h3>
+            <div class="project-tap-cover">
+              <button class="project_btn on" data-filter="*">All
+                <span class="project-count">3</span>
+              </button>
+              <button class="project_btn" data-filter="responsive">RWD/AWD
+                <span class="project-count">3</span>
+              </button>
+              <button class="project_btn" data-filter="scss">SCSS
+                <span class="project-count">3</span>
+              </button>
+            </div>
+            <div class="projects-cover">
+              <a href="" class="projects show" data-type="scss">
+                <img src="./images/projects-navercorp.png" alt="navercorp사이트 이미지" >
+                <div class="project-text-cover">
+                  <h4>네이버</h4>
+                  <span>Clone Coding With SCSS AND Adaptive</span>
+                </div>
+              </a>
+              <a href="./donorscamp.html" target="_blank" class="projects show"  data-type="responsive">
+                <img src="./images/projects-donorscamp.png" alt="donorscamp사이트 이미지" >
+                <div class="project-text-cover">
+                  <h4>도너스캠프</h4>
+                  <span>Clone Coding With SCSS AND Responsive</span>
+                </div>
+              </a>
+              <a href="" class="projects show"  data-type="scss">
+                <img src="./images/projects-navercorp.png" alt="네이버" >
+                <div class="project-text-cover">
+                  <h4>도너스캠프</h4>
+                  <span>Clone Coding With SCSS AND Responsive</span>
+                </div>
+              </a>
+              <a href="" class="projects show" data-type="scss">
+                <img src="./images/projects-navercorp.png" alt="네이버" >
+                <div class="project-text-cover">
+                  <h4>도너스캠프</h4>
+                  <span>Clone Coding With SCSS AND Responsive</span>
+                </div>
+              </a>
+              <a href="" class="projects show" data-type="scss">
+                <img src="./images/projects-navercorp.png" alt="네이버" >
+                <div class="project-text-cover">
+                  <h4>도너스캠프</h4>
+                  <span>Clone Coding With SCSS AND Responsive</span>
+                </div>
+              </a>
+            </div>
+        </div>
+      </article>
+      <article id="contact" data-index="3">
+        <div class="contact-cover">
+          <h3>Let's talk after we meet.</h3>
+          <a href="mailto:misunplus@gmail.com">misunplus@gmail.com</a>
+          <a href="tel:010-2456-1122">010-2456-1122</a>
+          <a href="https://github.com/misunplus?tab=repositories" target="blank" ><i class="fab fa-github"></i></a>
+          <footer>
+            <address>&copy;Designed by Beckia</address>
+          </footer>
+        </div>
+      </article>
+    </section>
+
+   
+    
+  </div>
+</body>
+
+</html>

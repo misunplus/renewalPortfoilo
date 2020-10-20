@@ -1,0 +1,1150 @@
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@keyframes line1 {
+  0% {
+    left: 0;
+    width: 0;
+  }
+  49% {
+    left: 0;
+    width: 100%;
+  }
+  50% {
+    right: 0;
+    width: 100%;
+    left: initial;
+  }
+  100% {
+    left: initial;
+    right: 0;
+    width: 0;
+  }
+}
+@keyframes line2 {
+  0% {
+    right: 0;
+    top: 0;
+    height: 0;
+  }
+  49% {
+    right: 0;
+    top: 0;
+    height: 100%;
+  }
+  50% {
+    top: initial;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+  }
+  100% {
+    top: initial;
+    right: 0;
+    bottom: 0;
+    height: 0%;
+  }
+}
+@keyframes line3 {
+  0% {
+    right: 0;
+    left: initial;
+    bottom: 0;
+    width: 0%;
+  }
+  49% {
+    right: 0;
+    left: initial;
+    bottom: 0;
+    width: 100%;
+  }
+  50% {
+    right: initial;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  100% {
+    right: initial;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+  }
+}
+@keyframes line4 {
+  0% {
+    top: initial;
+    left: 0;
+    height: 0;
+    bottom: 0;
+  }
+  49% {
+    top: initial;
+    left: 0;
+    height: 100%;
+    bottom: 0;
+  }
+  50% {
+    left: 0;
+    top: 0;
+    height: 100%;
+    bottom: initial;
+    top: 0;
+  }
+  100% {
+    left: 0;
+    top: 0;
+    height: 0%;
+    bottom: initial;
+  }
+}
+body {
+  background-color: rgba(148, 113, 92, 0.5);
+  font-family: 'Roboto Mono', monospace;
+}
+
+#wrap {
+  font-family: Roboto;
+  min-width: 992px;
+}
+@media screen and (max-width: 992px) {
+  #wrap {
+    width: 100%;
+    min-width: initial;
+  }
+}
+#wrap > .toggle-btn {
+  display: none;
+  width: 25px;
+  height: 25px;
+  text-indent: -9999px;
+  background: url(./../images/btn-tg.png) no-repeat;
+  background-size: 25px 25px;
+}
+@media screen and (max-width: 768px) {
+  #wrap > .toggle-btn {
+    display: block;
+    position: fixed;
+    right: 20px;
+    top: 30px;
+  }
+}
+#wrap > #navbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 50px;
+  width: 100%;
+  z-index: 1000;
+  margin: 0 auto;
+}
+#wrap > #navbar > .gnb {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  position: absolute;
+  right: 30px;
+}
+@media screen and (max-width: 992px) {
+  #wrap > #navbar > .gnb {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    left: 0;
+  }
+}
+#wrap > #navbar > .gnb.on li {
+  transform: scale(0.7);
+  filter: blur(5px);
+}
+@media screen and (max-width: 992px) {
+  #wrap > #navbar > .gnb.on li {
+    filter: initial;
+  }
+}
+#wrap > #navbar > .gnb.on {
+  transform: scale(0.7);
+}
+#wrap > #navbar > .gnb > li {
+  position: relative;
+  height: 50px;
+  margin: 30px 0;
+  transition: all 0.4s;
+}
+@media screen and (max-width: 992px) {
+  #wrap > #navbar > .gnb > li {
+    margin: initial;
+    height: 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap > #navbar > .gnb > li {
+    height: 30px;
+  }
+}
+#wrap > #navbar > .gnb > li:before, #wrap > #navbar > .gnb > li:after, #wrap > #navbar > .gnb > li.on:before, #wrap > #navbar > .gnb > li.on:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  background-color: #94715c;
+  z-index: 1;
+}
+#wrap > #navbar > .gnb > li:before {
+  width: 0;
+  height: 5px;
+}
+#wrap > #navbar > .gnb > li:after {
+  width: 5px;
+  height: 0;
+}
+#wrap > #navbar > .gnb > li.on:before {
+  animation: line1 0.3s both;
+}
+#wrap > #navbar > .gnb > li.on:after {
+  height: 0%;
+  animation: line4 0.3s both 0.9s;
+}
+#wrap > #navbar > .gnb > li > a {
+  position: relative;
+  display: block;
+  width: 150px;
+  height: 100%;
+  color: #94715c;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  color: #94715c;
+  background-color: #b2dab8;
+  transition: all 0.9s;
+  background-position-x: center;
+  border-radius: 5px;
+}
+@media screen and (max-width: 992px) {
+  #wrap > #navbar > .gnb > li > a {
+    width: 150px;
+    line-height: 50px;
+    color: #94715c;
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap > #navbar > .gnb > li > a {
+    width: 60px;
+    line-height: 30px;
+    color: #94715c;
+    font-weight: 400;
+    font-size: 16;
+  }
+}
+#wrap > #navbar > .gnb > li > a:after, #wrap > #navbar > .gnb > li > a::before {
+  display: block;
+  position: absolute;
+  content: '';
+  background-color: #94715c;
+}
+#wrap > #navbar > .gnb > li.on > a:before {
+  left: 0;
+  bottom: 0;
+  height: 5%;
+}
+#wrap > #navbar > .gnb > li.on > a:before {
+  animation: line3 0.3s both 0.6s;
+}
+#wrap > #navbar > .gnb > li.on > a:after {
+  right: 0;
+  top: 0;
+  width: 5px;
+}
+#wrap > #navbar > .gnb > li.on > a:after {
+  animation: line2 0.3s both 0.3s;
+}
+#wrap > #navbar > .gnb > li.on, #wrap > #navbar > .gnb > li:hover {
+  transform: scale(1.2);
+  filter: initial;
+}
+@media screen and (max-width: 768px) {
+  #wrap > #navbar > .gnb > li.on, #wrap > #navbar > .gnb > li:hover {
+    transform: scale(1);
+  }
+}
+#wrap > #navbar > .gnb > li.on > a, #wrap > #navbar > .gnb > li.on > a {
+  position: relative;
+  font-weight: 800;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-image: url(./../images/logomini.png);
+  background-repeat: no-repeat;
+  background-position-y: 25px;
+}
+@media screen and (max-width: 992px) {
+  #wrap > #navbar > .gnb > li.on > a, #wrap > #navbar > .gnb > li.on > a {
+    width: 150px;
+    background-position: center 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap > #navbar > .gnb > li.on > a, #wrap > #navbar > .gnb > li.on > a {
+    width: 100px;
+    background-position: center 5px;
+  }
+}
+#wrap #home {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#wrap #home > h1 {
+  position: fixed;
+  z-index: 1001;
+}
+@media screen and (max-width: 992px) {
+  #wrap #home > h1 {
+    margin-top: 65px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap #home > h1 {
+    margin-top: 55px;
+  }
+}
+#wrap #home > h1 > a {
+  width: 100px;
+  height: 100px;
+  display: block;
+  position: absolute;
+  z-index: 1000;
+}
+@media screen and (max-width: 768px) {
+  #wrap #home > h1 > a {
+    width: 50px;
+    height: 50px;
+  }
+}
+#wrap #home > h1 > a > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-size: cover cover;
+  border-radius: 50%;
+  border: 2px solid #94715c;
+}
+#wrap #home > h1 > a > .logoframe {
+  display: block;
+  position: absolute;
+  top: 35px;
+  width: 100px;
+  -webkit-animation: rotation 5s infinite linear;
+  z-index: 0;
+}
+@media screen and (max-width: 768px) {
+  #wrap #home > h1 > a > .logoframe {
+    width: 50px;
+    top: 15px;
+  }
+}
+#wrap #home > .visual {
+  position: relative;
+  padding-top: 100px;
+  width: 100%;
+}
+@media screen and (max-width: 992px) {
+  #wrap #home > .visual {
+    display: flex;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap #home > .visual {
+    flex-flow: column nowrap;
+  }
+}
+#wrap #home > .visual > .visual-cover {
+  width: 100%;
+  margin: -70px auto 0;
+}
+@media screen and (max-width: 768px) {
+  #wrap #home > .visual > .visual-cover {
+    margin: 0;
+  }
+}
+#wrap #home > .visual > .visual-cover > p {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  text-indent: -9999px;
+  margin: 0 auto;
+  background: url(./../images/profileimg.png) no-repeat;
+  background-position: center center;
+  background-size: 350px 350px;
+  border-radius: 50%;
+}
+@media screen and (max-width: 768px) {
+  #wrap #home > .visual > .visual-cover > p {
+    width: 150px;
+    height: 150px;
+    background-size: 150px 150px;
+  }
+}
+#wrap #home > .visual > .visual-cover > p:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: rotation 10s infinite linear;
+  width: 350px;
+  height: 350px;
+  border: 10px solid #94715c;
+  border-radius: 10px;
+  content: '';
+  box-sizing: border-box;
+  z-index: -1;
+}
+@media screen and (max-width: 768px) {
+  #wrap #home > .visual > .visual-cover > p:after {
+    width: 150px;
+    height: 150px;
+    border: 5px solid #94715c;
+  }
+}
+#wrap #home > .visual > .text-cover {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+#wrap #home > .visual > .text-cover > h2 {
+  font-size: 30px;
+  line-height: 2;
+  font-family: 'Nanum Pen Script', cursive;
+}
+@media screen and (max-width: 992px) {
+  #wrap #home > .visual > .text-cover > h2 {
+    font-size: 20px;
+  }
+}
+#wrap #home > .visual > .text-cover > p {
+  font-size: 22px;
+  line-height: 2;
+  font-family: 'Nanum Pen Script', cursive;
+  text-align: center;
+}
+@media screen and (max-width: 992px) {
+  #wrap #home > .visual > .text-cover > p {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap #home > .visual > .text-cover > p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+  }
+  #wrap #home > .visual > .text-cover > p > br {
+    display: none;
+  }
+}
+@media screen and (max-width: 427px) {
+  #wrap #home > .visual > .text-cover > p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    -webkit-line-clamp: 3;
+  }
+}
+#wrap #home > .visual > .text-cover button {
+  position: relative;
+  border: none;
+  background-color: none;
+  width: 150px;
+  height: 50px;
+  margin: 50px 0 100px;
+  color: #94715c;
+  line-height: 50px;
+  background-color: #b2dab8;
+  border: 2px solid #94715c;
+  border-radius: 10px;
+  z-index: 12;
+}
+#wrap #home > .visual canvas {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+}
+@media screen and (max-width: 992px) {
+  #wrap #home > .visual {
+    height: 450px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap #home > .visual {
+    height: 450px;
+  }
+}
+#wrap > section > h2 {
+  position: absolute;
+  left: -9999px;
+}
+#wrap > section > article {
+  opacity: 0;
+  transition: all 1s linear;
+}
+#wrap > section > article.visible {
+  opacity: 1;
+}
+#wrap > section > #about {
+  display: block;
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1200px;
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #about {
+    height: 1000px;
+  }
+}
+#wrap > section > #about > .about-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50px;
+  width: 100%;
+  margin: 0 auto;
+}
+#wrap > section > #about > .about-cover > .about-cover-text {
+  width: 60%;
+  margin: 50px auto;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #about > .about-cover > .about-cover-text {
+    width: 90%;
+  }
+}
+#wrap > section > #about > .about-cover > .about-cover-text > h3 {
+  font-size: 30px;
+  line-height: 2;
+  font-family: 'Nanum Pen Script', cursive;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #about > .about-cover > .about-cover-text > h3 {
+    font-size: 20px;
+  }
+}
+#wrap > section > #about > .about-cover > .about-cover-text > p {
+  font-size: 22px;
+  line-height: 2;
+  font-family: 'Nanum Pen Script', cursive;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #about > .about-cover > .about-cover-text > p {
+    font-size: 18px;
+  }
+  #wrap > section > #about > .about-cover > .about-cover-text > p > br {
+    display: none;
+  }
+}
+@media screen and (max-width: 427px) {
+  #wrap > section > #about > .about-cover > .about-cover-text > p {
+    word-break: break-all;
+  }
+}
+#wrap > section > #about > .about-cover > .about-self-introduction {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 24px;
+  line-height: 2;
+  font-family: 'Nanum Pen Script', cursive;
+}
+#wrap > section > #about > .about-cover > .about-self-introduction > .profille-cover {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+#wrap > section > #about > .about-cover > .about-self-introduction > .interest {
+  width: 50%;
+  margin: 0 auto;
+}
+#wrap > section > #about > .about-cover > .icon-cover {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #about > .about-cover > .icon-cover {
+    width: 100%;
+  }
+}
+#wrap > section > #about > .about-cover > .icon-cover > div {
+  width: 33.33%;
+}
+#wrap > section > #about > .about-cover > .icon-cover > div > .icon-cover {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border: 5px solid #94715c;
+  border-radius: 50%;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #about > .about-cover > .icon-cover > div > .icon-cover {
+    width: 150px;
+    height: 150px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #about > .about-cover > .icon-cover > div > .icon-cover {
+    width: 80px;
+    height: 80px;
+  }
+}
+#wrap > section > #about > .about-cover > .icon-cover > div > .icon-cover > i {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+  color: #94715c;
+  font-size: 100px;
+  text-align: center;
+  transition: all 0.4s linear;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #about > .about-cover > .icon-cover > div > .icon-cover > i {
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+    margin-top: -50px;
+    font-size: 100px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #about > .about-cover > .icon-cover > div > .icon-cover > i {
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    margin-top: -25px;
+    font-size: 50px;
+  }
+}
+#wrap > section > #about > .about-cover > .icon-cover > div:hover .icon-cover:after {
+  display: block;
+  position: absolute;
+  left: 50%;
+  width: 13px;
+  height: 100%;
+  background: url(./../images/logomini.png) no-repeat;
+  background-size: 13px 13px;
+  -webkit-animation: rotation 0.5s linear;
+  content: '';
+}
+#wrap > section > #about > .about-cover > .icon-cover > div:hover .icon-cover > i {
+  transform: rotate(45deg) scale(1.2);
+}
+#wrap > section > #about > .about-cover > .icon-cover > div > .icon-text-cover {
+  margin-top: 20px;
+  text-align: center;
+}
+#wrap > section > #about > .about-cover > .icon-cover > div > .icon-text-cover > .title {
+  color: #94715c;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 2;
+  font-family: 'Roboto';
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #about > .about-cover > .icon-cover > div > .icon-text-cover > .title {
+    font-size: 16px;
+  }
+}
+#wrap > section > #about > .about-cover > .icon-cover > div > .icon-text-cover > .text {
+  color: #94715c;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 2;
+  font-family: 'Roboto';
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #about > .about-cover > .icon-cover > div > .icon-text-cover > .text {
+    font-size: 14px;
+  }
+}
+#wrap > section > #about > .about-cover > .study-cover {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  align-items: center;
+}
+#wrap > section > #about > .about-cover > .study-cover .study-logo > h3 {
+  margin-top: 30px;
+  width: 165px;
+  height: 75px;
+  text-indent: -9999px;
+  border: 2px solid #94715c;
+  border-radius: 10px;
+}
+#wrap > section > #about > .about-cover > .study-cover .study-logo .hyundai {
+  background: url(./../images/hyundai-logo.png) no-repeat;
+}
+#wrap > section > #about > .about-cover > .study-cover .study-logo .thejoeun {
+  background: url(./../images/thejoeun-log.png) no-repeat;
+}
+#wrap > section > #about > .about-cover > .study-cover > .text-cover {
+  margin-top: 20px;
+}
+#wrap > section > #about > .about-cover > .study-cover > .text-cover > p {
+  margin-top: 10px;
+  color: #94715c;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #about > .about-cover > .study-cover > .text-cover > p {
+    font-size: 18px;
+  }
+}
+#wrap > section > #about > .about-cover.on {
+  display: block;
+}
+#wrap > section > #skills {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 700px;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #skills {
+    height: 650px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #skills {
+    height: 600px;
+  }
+}
+#wrap > section > #skills > .skills-cover {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto 500px;
+}
+#wrap > section > #skills > .skills-cover > .skills-cover-text {
+  width: 100%;
+  margin: 50px auto;
+  text-align: center;
+}
+#wrap > section > #skills > .skills-cover > .skills-cover-text > h3 {
+  font-size: 30px;
+  line-height: 2;
+  font-family: 'Nanum Pen Script', cursive;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #skills > .skills-cover > .skills-cover-text > h3 {
+    font-size: 20px;
+  }
+}
+#wrap > section > #skills > .skills-cover #my-skills-cover {
+  display: flex;
+  flex-direction: culmn;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  border: 5px solid #94715c;
+  box-sizing: border-box;
+}
+#wrap > section > #skills > .skills-cover #my-skills-cover > .skill > .skill-text-cover {
+  position: relative;
+}
+#wrap > section > #skills > .skills-cover #my-skills-cover > .skill > .skill-text-cover > p {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Roboto Mono', monospace;
+  color: #94715c;
+  font-weight: 800;
+  font-size: 20px;
+  background: -webkit-linear-gradient(30deg, #000 30%, #94715c 30%, #000);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #skills > .skills-cover #my-skills-cover > .skill > .skill-text-cover > p {
+    color: #94715c;
+    font-weight: 800;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #skills > .skills-cover #my-skills-cover > .skill > .skill-text-cover > p {
+    color: #94715c;
+    font-weight: 800;
+    font-size: 14px;
+  }
+}
+#wrap > section > #skills > .skills-cover #my-skills-cover > .skill > .skill-text-cover > span {
+  position: absolute;
+  margin-top: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Roboto Mono', monospace;
+  color: #94715c;
+  font-weight: 800;
+  font-size: 16px;
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #skills > .skills-cover #my-skills-cover > .skill > .skill-text-cover > span {
+    margin-top: 7px;
+    color: #94715c;
+    font-weight: 800;
+    font-size: 14px;
+  }
+}
+#wrap > section > #skills > .skills-cover #my-skills-cover > .skill > .skill-text-cover > .cavas {
+  margin-top: 30px;
+  width: 150px;
+  height: 150px;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #skills > .skills-cover #my-skills-cover > .skill > .skill-text-cover > .cavas {
+    width: 130px;
+    height: 130px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #skills > .skills-cover #my-skills-cover > .skill > .skill-text-cover > .cavas {
+    width: 60px;
+    height: 60px;
+  }
+}
+#wrap > section > #skills > .skills-cover .etc-cover {
+  position: relative;
+  width: 30%;
+  padding: 20px 0 50px;
+  border: 5px solid #94715c;
+  border-left: none;
+  box-sizing: border-box;
+}
+#wrap > section > #skills > .skills-cover .etc-cover > h4 {
+  width: 100%;
+  text-align: center;
+}
+#wrap > section > #skills > .skills-cover .etc-cover > h4 > span {
+  font-family: 'Roboto Mono', monospace;
+  color: #94715c;
+  font-weight: 800;
+  font-size: 20px;
+  background: -webkit-linear-gradient(30deg, #000 30%, #94715c 30%, #000);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #skills > .skills-cover .etc-cover > h4 {
+    color: #94715c;
+    font-weight: 800;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #skills > .skills-cover .etc-cover > h4 {
+    color: #94715c;
+    font-weight: 800;
+    font-size: 14px;
+  }
+}
+#wrap > section > #skills > .skills-cover .etc-cover > ul > li > span {
+  display: block;
+  font-family: 'Roboto Mono', monospace;
+  color: #94715c;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 2;
+  text-align: center;
+  width: 100%;
+}
+#wrap > section > #project {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+#wrap > section > #project > .project-cover {
+  width: 100%;
+}
+#wrap > section > #project > .project-cover > h3 {
+  width: 60%;
+  margin: 50px auto;
+  font-size: 30px;
+  line-height: 2;
+  text-align: center;
+  font-family: 'Nanum Pen Script', cursive;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #project > .project-cover > h3 {
+    font-size: 20px;
+  }
+}
+#wrap > section > #project > .project-cover > .project-tap-cover {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #project > .project-cover > .project-tap-cover {
+    width: 100%;
+  }
+}
+#wrap > section > #project > .project-cover > .project-tap-cover > button {
+  position: relative;
+  border: initial;
+  background-color: initial;
+  width: 200px;
+  height: 50px;
+  margin: 0 10px;
+  color: #94715c;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 20px;
+  background-color: #b2dab8;
+  border-radius: 10px;
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #project > .project-cover > .project-tap-cover > button {
+    text-align: left;
+    padding-left: 10px;
+    width: 150;
+    height: 50px;
+    color: #94715c;
+    font-weight: 800;
+    font-size: 12px;
+  }
+}
+#wrap > section > #project > .project-cover > .project-tap-cover > button > span {
+  position: absolute;
+  display: inline-block;
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #94715c;
+  opacity: 0;
+  transform: translateY(-13px);
+  transition: all 400ms ease-in;
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #project > .project-cover > .project-tap-cover > button > span {
+    text-align: center;
+    margin-left: 4px;
+  }
+}
+#wrap > section > #project > .project-cover > .project-tap-cover > button.on .project-count, #wrap > section > #project > .project-cover > .project-tap-cover > button:hover .project-count {
+  transform: translateY(0px);
+  opacity: 1;
+  top: 15px;
+}
+#wrap > section > #project > .project-cover > .projects-cover {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 70%;
+  margin: 50px auto 0;
+  min-height: 620px;
+}
+@media screen and (max-width: 992px) {
+  #wrap > section > #project > .project-cover > .projects-cover {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #project > .project-cover > .projects-cover {
+    width: 100%;
+  }
+}
+#wrap > section > #project > .project-cover > .projects-cover > .projects {
+  display: none;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 40px;
+  box-sizing: border-box;
+  background-color: rgba(148, 113, 92, 0.5);
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #project > .project-cover > .projects-cover > .projects {
+    width: 100px;
+    height: 100px;
+    margin: 40px;
+  }
+}
+#wrap > section > #project > .project-cover > .projects-cover > .projects > img {
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  max-width: 80%;
+  transition: all 400ms ease-in;
+}
+#wrap > section > #project > .project-cover > .projects-cover > .projects.show {
+  display: block;
+}
+#wrap > section > #project > .project-cover > .projects-cover > .projects:hover img {
+  width: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: cover cover;
+}
+#wrap > section > #project > .project-cover > .projects-cover > .projects > .project-text-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-10px);
+  transition: all 400ms ease-in;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+#wrap > section > #project > .project-cover > .projects-cover > .projects > .project-text-cover > h4 {
+  position: relative;
+  padding-top: 40px;
+  text-align: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #project > .project-cover > .projects-cover > .projects > .project-text-cover > h4 {
+    padding-top: 0;
+    color: #fff;
+    font-weight: 800;
+    font-size: 12px;
+  }
+}
+#wrap > section > #project > .project-cover > .projects-cover > .projects > .project-text-cover > h4:after {
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  transform: translate(-50%, 0);
+  display: block;
+  content: '';
+  height: 2px;
+  width: 20px;
+  text-align: center;
+  background-color: #b2dab8;
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #project > .project-cover > .projects-cover > .projects > .project-text-cover > h4:after {
+    bottom: -7px;
+  }
+}
+#wrap > section > #project > .project-cover > .projects-cover > .projects > .project-text-cover > span {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  display: -webkit-box;
+  word-break: break-all;
+  line-clamp: 2;
+}
+@media screen and (max-width: 768px) {
+  #wrap > section > #project > .project-cover > .projects-cover > .projects > .project-text-cover > span {
+    padding-top: 0;
+    color: #fff;
+    font-weight: 800;
+    font-size: 12px;
+  }
+}
+#wrap > section > #project > .project-cover > .projects-cover > .projects:hover .project-text-cover {
+  opacity: 0.8;
+  transform: scale(1.2) translateY(0px);
+}
+#wrap > section > #contact {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 450px;
+}
+#wrap > section > #contact > .contact-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+#wrap > section > #contact > .contact-cover > h3 {
+  text-align: center;
+  color: #94715c;
+  font-weight: 800px;
+  font-size: 50px;
+}
+#wrap > section > #contact > .contact-cover > a {
+  line-height: 2;
+  display: block;
+  text-align: center;
+  color: #94715c;
+  font-weight: 400;
+  font-size: 30px;
+}
+#wrap > section > #contact > .contact-cover > a > i {
+  display: block;
+  text-align: center;
+  color: #94715c;
+  font-weight: 400;
+  font-size: 60px;
+}
+#wrap > section > #contact > .contact-cover > footer {
+  display: block;
+  text-align: center;
+  color: #fff;
+  font-weight: 400;
+  font-size: 40px;
+}
+#wrap > section > #pop {
+  background-color: pink;
+}
+
+/*# sourceMappingURL=style.css.map */
