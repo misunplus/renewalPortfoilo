@@ -177,19 +177,21 @@ body {
 		left: 0;
 		right: 0;
 		height: 50px;
-		// max-width: 1024px;
 		width: 100%;
 		z-index: 1000;
 		margin: 0 auto;
+		@media #{$tablet} {
+			top: 20px;
+		}
 		> .gnb {
 			// background-color: #fff;
 			@include flex(column, nowrap);
 			position: absolute;
-
 			right: 30px;
 			@media #{$tablet} {
 				@include flex(row, nowrap);
 				justify-content: space-between;
+				right: 0;
 				left: 0;
 			}
 
@@ -337,7 +339,6 @@ body {
 		left: 0;
 		width: 100%;
 		height: 100%;
-
 		> h1 {
 			position: fixed;
 			z-index: 1001;
@@ -552,11 +553,12 @@ body {
 			bottom: 0;
 			left: 0;
 			width: 100%;
-			height: 1200px;
+			height: 1500px;
+
 			// margin-top: 50px;
-			// background-color: #fff;
+
 			@media #{$mobile} {
-				height: 1000px;
+				height: 1500px;
 			}
 			> .about-cover {
 				// display: none;
@@ -611,22 +613,42 @@ body {
 					line-height: 2;
 
 					font-family: 'Nanum Pen Script', cursive;
-
-					> .profille-cover {
+					@media #{$mobile} {
+						display: initial;
+						line-height: 1.2;
+					}
+					> .profile-cover {
 						width: 50%;
 						margin: 0 auto;
-						background-color: #fff;
+						background: url(./../images/profileTiger.png) no-repeat;
+						background-size: contain;
+						background-position-x: center;
+						@media #{$mobile} {
+							width: 100%;
+						}
+						> p {
+							background: linear-gradient(to right, $color-brown 40%, $color-Blue);
+							-webkit-background-clip: text;
+							-webkit-text-fill-color: transparent;
+							@include fontset($color-brown, 800, 35px);
+							@media #{$mobile} {
+								@include fontset($color-brown, 800, 30px);
+							}
+						}
 					}
 					> .interest {
 						width: 50%;
 						margin: 0 auto;
+						@media #{$mobile} {
+							margin-top: 50px;
+						}
 					}
 				}
 				> .icon-cover {
 					display: flex;
 					justify-content: space-between;
 					width: 80%;
-					margin: 0 auto;
+					margin: 50px auto 0;
 					@media #{$mobile} {
 						width: 100%;
 					}
@@ -775,9 +797,11 @@ body {
 				height: 100%;
 				margin: 0 auto 500px;
 				// background-color: #fff;
+				@media #{$mobile} {
+					display: initial;
+				}
 				> .skills-cover-text {
 					width: 100%;
-
 					margin: 50px auto;
 					text-align: center;
 					// background-color: #fff;
@@ -797,6 +821,10 @@ body {
 					width: 70%;
 					border: 5px solid $color-brown;
 					box-sizing: border-box;
+					@media #{$mobile} {
+						width: 100%;
+						justify-content: space-between;
+					}
 
 					> .skill {
 						> .skill-text-cover {
@@ -856,6 +884,11 @@ body {
 					border-left: none;
 					box-sizing: border-box;
 					// background-color: #fff;
+					@media #{$mobile} {
+						width: 100%;
+						margin-top: 20px;
+					}
+
 					> h4 {
 						width: 100%;
 						text-align: center;
@@ -874,7 +907,14 @@ body {
 						}
 					}
 					> ul {
+						@media #{$mobile} {
+							@include flex();
+							justify-content: space-between;
+						}
 						> li {
+							@media #{$mobile} {
+							}
+
 							> span {
 								display: block;
 								font-family: 'Roboto Mono', monospace;
@@ -882,6 +922,12 @@ body {
 								line-height: 2;
 								text-align: center;
 								width: 100%;
+
+								@media #{$mobile} {
+									> br {
+										display: none;
+									}
+								}
 							}
 						}
 					}

@@ -105,44 +105,91 @@ $(function () {
 	//스크롤 이벤트	 
 	const $menuBtn = document.querySelectorAll('#wrap > #navbar > .gnb > li');
 	const $sectionArticle = document.querySelectorAll('#wrap > section > article');
+	const $home = document.querySelector('#wrap #home');
 	let visibleItem;
 
 	window.addEventListener('scroll', () =>{
-		let aticleValue;
-		let boundingRect;
-		let nowIdx;
-		for(let i=0; i<$sectionArticle.length; i++){
-			aticleValue =  $sectionArticle[i];
-			boundingRect= aticleValue.getBoundingClientRect();
+	// 	let aticleValue;
+	// 	let boundingRect;
+	// 
+		let homebounding;
+	// 	for(let i=0; i<$sectionArticle.length; i++){
+	// 		aticleValue =  $sectionArticle[i];
+	// 		boundingRect= aticleValue.getBoundingClientRect();
+			homebounding = $home.getBoundingClientRect();
 		
-			if(boundingRect.top > window.innerHeight * 0.15 && boundingRect.top < window.innerHeight * 0.9){
-				nowIdx = aticleValue.dataset.index;
-				nowIdx = parseInt(nowIdx);
+			
+	// 		if(boundingRect.top > window.innerHeight * 0.1 && boundingRect.top < window.innerHeight * 0.9){
+	// 			console.log("바운딩 탑",boundingRect )
+	// 			console.log("인어 하이트 탑", window.innerHeight )
+	// 			nowIdx = aticleValue.dataset.index;
+	// 			nowIdx = parseInt(nowIdx);
 				
-				if(visibleItem){
-					visibleItem.classList.remove('visible');
-					visibleMenu.classList.remove('on');
+	// 			if(visibleItem){
+	// 				visibleItem.classList.remove('visible');
+	// 				visibleMenu.classList.remove('on');
 				
-				}
-				visibleItem  =$sectionArticle[nowIdx];
-				visibleItem.classList.add('visible');
+	// 			}
+	// 			visibleItem  =$sectionArticle[nowIdx];
+	// 			visibleItem.classList.add('visible');
 
-				visibleMenu = $menuBtn[nowIdx+1]
-				visibleMenu.classList.add('on');
-				if(nowIdx === 1){
-					requestAnimationFrame(draw);
-					setInterval(draw, 200);
-				}
+	// 			visibleMenu = $menuBtn[nowIdx+1]
+	// 			visibleMenu.classList.add('on');
+	// 			if(nowIdx === 1){
+	// 				requestAnimationFrame(draw);
+	// 				setInterval(draw, 200);
+	// 			}
 
+	
+
+	// 		}
+
+			if(homebounding.top === 0){
+				// visibleMenu.classList.remove('on');
+						$menuBtn.forEach(li => {
+				li.classList.remove('on')
+			});
 			}
-		}
+	// 	}
 	});
+
+// IntersectionObserver 를 등록한다.
+let nowIdx;
+const io = new IntersectionObserver(entries => {
+	console.log("io",io)
+	entries.forEach(entry => {
+		// 관찰 대상이 viewport 안에 들어온 경우 'tada' 클래스를 추가
+    if (entry.intersectionRatio > 0) {
+			nowIdx = entry.target.dataset.index ;
+			nowIdx = parseInt(nowIdx)+1;
+			$menuBtn.forEach(li => {
+				li.classList.remove('on')
+			});
+			$menuBtn[nowIdx].classList.add('on')
+      entry.target.classList.add('visible');
+    }
+    else {
+			entry.target.classList.remove('visible');
+    }
+  })
+})
+
+
+
+// 관찰할 대상을 선언하고, 해당 속성을 관찰시킨다.
+const $articlelist = document.querySelectorAll('article');
+$articlelist.forEach((el) => {
+	io.observe(el);
+})
+
+
+
+
 
  const navberMenu =document.querySelector('.gnb');
 	navberMenu.addEventListener('click', (event) => {
 		event.preventDefault();
 		const targetLink = event.target.parentNode.dataset.link;
-		console.log(targetLink);
 		if (targetLink == null) {
 			return;
 		} else {
@@ -151,79 +198,12 @@ $(function () {
 		}
 	});
 
-
-
-
 	function scrollIntoview(selecter) {
 		const scrollTo = document.querySelector(selecter);
 		scrollTo.scrollIntoView({ behavior: 'smooth' });
-		console.log("scrollIntoview");
-	}
-	
 
-
-
-// 	const scrollEvtFn = function () {
-// 		$(window).on('scroll', function () {
-// 			scrollTop = $(window).scrollTop();
-// 			if (headerHeight - $navbar.outerHeight() - 50 <= scrollTop) {
-// 				srlTopFn();
-// 				$gng.addClass('on');
-// 			} else {
-// 				let navarHeight = $('body').outerHeight() - $navbar.outerHeight() - 100;
-// 				$navbar.stop().animate(
-// 					{
-// 						top: navarHeight
-// 					},
-// 					200
-// 				);
-// 				$gng.removeClass('on');
-// 			}
-// 			//임시주석
-// 			// menuItemOnFn()
-// 	});
-// }
-	// //현재 스크롤 탑값
-	// const $sectionArticle = $('#wrap > section > article');
-	// //아티클의 높이를 담을 변수
-	// let $articleTopVal = [];
-
-	// // 홈제외한 다른 메뉴컨텐츠의 높이 배열 저장
-	// for (let i = 0; i < $('#wrap > #navbar > .gnb > li').length - 1; i++) {
-	// 	$articleTopVal[i] = $sectionArticle.eq(i).offset().top;
-	// }
-
-	
-
-
-	// let scrollTop = $(window).scrollTop();
-	// const $menuBtn = $('#wrap > #navbar > .gnb > li');
-	//Home 제외하고 나머지 메뉴에 스크롤이 갔을때 온클래스 관리
-	const menuItemOnFn = function () {
-		for (let i = 0; i < $('#wrap > #navbar > .gnb > li').length - 1; i++) {
-			
-			// if (scrollTop < $('#navbar').outerHeight()) {
-			// 	$menuBtn.removeClass('on');
-			// 	$('#wrap > section > article').eq(i).children().fadeOut().removeClass('on');
-			// }
-			// if (scrollTop >= $articleTopVal[i] - 500) {
-			// 	$menuBtn.eq(i + 1).addClass('on').siblings().removeClass('on');
-			// 	$('#wrap > section > article').eq(i).children().fadeIn().addClass('on');
-			// }
-		}
-	
 	}
 
-	// let targetLinks = '';
-	// // 메뉴버튼이 클릭됐을때 이동 이벤트
-	// $('#wrap > #navbar > .gnb > li').on('click', function () {
-	// 	targetLink = $(this).data('link');
-	// 	let sectionTopVal = $(targetLinks).offset().top;
-		
-	// 	$('html, body').animate({
-	// 		scrollTop: sectionTopVal
-	// 	});
-	// });
 
 	const $projects = $('#wrap > section > #project > .project-cover > .projects-cover > .projects');
 	const $projectBtn = $('#wrap > section > #project > .project-cover > .project-tap-cover > button');
@@ -250,33 +230,12 @@ $(function () {
 		if (userDevice === 'mobile') {
 			console.log('모바일');
 			$('#wrap').addClass('mobile').removeClass('pc');
-			// navHeight = 60;
-			// // $(window).off('scroll');
-			// // srlTopFn();
-			// //스크롤 이벤트
-			// $(window).on('scroll', function () {
-			// 	scrollTop = $(window).scrollTop();
-			// 	//임시주석
-			// 	// menuItemOnFn(); 
-			// });
+
 
 			////////////////////////////////////////////////////*  피씨일일때 */
 		} else {
 			console.log('피씨');
 			$('#wrap').addClass('pc').removeClass('mobile');
-			// navHeight = 100;
-			// $(window).off('scroll');
-			// $('html, body').animate({
-			// 	scrollTop: 0
-			// });
-			// $('#navbar').stop().animate(
-			// 	{
-			// 		top: $('body').outerHeight() - $('#navbar').outerHeight() - 100
-			// 	},
-			// 	200
-			// );
-			// scrollEvtFn();
-
 		}
 	};
 
